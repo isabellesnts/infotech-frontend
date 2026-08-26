@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-  /* Palette: profissional e sóbria */
-  --primary: #0f4c81; /* azul-marinho */
-  --primary-600: #0b3b66;
-  --secondary: #00a896; /* teal */
-  --muted: #6b7280;
-  --text: #374151;
-  --text-h: #0f1724;
-  --bg: #ffffff;
-  --surface: #f8fafc;
-  --border: #e6edf3;
-  --code-bg: #f4f7fb;
+  /* Palette: Preto / Branco / Roxo (escuro por padrão) */
+  --primary: #7c3aed; /* roxo saturado */
+  --primary-600: #5b21b6;
+  --secondary: #a78bfa; /* roxo claro */
+  --muted: #9ca3af;
+  --text: #e6e6e9; /* off-white */
+  --text-h: #ffffff;
+  --bg: #060608; /* quase preto */
+  --surface: #0f0f12;
+  --border: #1b1b1f;
+  --code-bg: #0b0b0e;
   --accent: var(--primary);
-  --accent-bg: rgba(15, 76, 129, 0.06);
-  --accent-border: rgba(15, 76, 129, 0.18);
-  --social-bg: rgba(245, 247, 250, 0.6);
-  --shadow: rgba(2,6,23,0.08) 0 10px 30px -10px;
+  --accent-bg: rgba(124,58,237,0.08);
+  --accent-border: rgba(124,58,237,0.22);
+  --social-bg: rgba(20,18,24,0.6);
+  --shadow: rgba(0,0,0,0.6) 0 10px 30px -10px;
   --radius: 10px;
   --radius-sm: 6px;
   --gap: 16px;
@@ -27,7 +27,7 @@
 
   font: 18px/1.6 var(--sans);
   letter-spacing: 0.2px;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -39,28 +39,66 @@
     font-size: 16px;
   }
 }
+:root {
+  /* Palette: Preto profundo / Roxo */
+  --primary: #6A00FF; /* roxo mais saturado */
+  --primary-600: #4B00CC;
+  --secondary: #9B7CFF;
+  --muted: #9ca3af;
+  --text: #eaeaf0;
+  --text-h: #ffffff;
+  --bg: #000000; /* preto absoluto */
+  --surface: #05050a; /* quase preto para superfícies */
+  --border: #0b0b0e; /* bordas sutis, quase pretas */
+  --code-bg: #040405;
+  --accent: var(--primary);
+  --accent-bg: rgba(106,0,255,0.10);
+  --accent-border: rgba(106,0,255,0.28);
+  --social-bg: rgba(20,18,24,0.6);
+  --shadow: rgba(0,0,0,0.8) 0 10px 30px -10px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --gap: 16px;
 
-@media (prefers-color-scheme: dark) {
+  --sans: Inter, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: Inter, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/1.6 var(--sans);
+  letter-spacing: 0.2px;
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+@media (prefers-color-scheme: light) {
   :root {
-    --primary: #5aa3ff;
-    --primary-600: #3b82f6;
-    --secondary: #34d399;
-    --muted: #9ca3af;
-    --text: #d1d5db;
-    --text-h: #e6eef8;
-    --bg: #0b1220;
-    --surface: #0f1724;
-    --border: #132031;
-    --code-bg: #071024;
+    --primary: #6b21a8; /* roxo mais escuro para contraste em claro */
+    --primary-600: #5b189b;
+    --secondary: #8b5cf6;
+    --muted: #6b7280;
+    --text: #111827;
+    --text-h: #0b1220;
+    --bg: #ffffff;
+    --surface: #f8fafc;
+    --border: #e6edf3;
+    --code-bg: #f4f7fb;
     --accent: var(--primary);
-    --accent-bg: rgba(90,163,255,0.08);
-    --accent-border: rgba(90,163,255,0.18);
-    --social-bg: rgba(8, 11, 16, 0.45);
-    --shadow: rgba(2,6,23,0.6) 0 10px 30px -10px;
+    --accent-bg: rgba(107,33,168,0.06);
+    --accent-border: rgba(107,33,168,0.18);
+    --social-bg: rgba(245, 247, 250, 0.6);
+    --shadow: rgba(16,24,32,0.06) 0 10px 30px -10px;
   }
 
   #social .button-icon {
-    filter: invert(1) brightness(2);
+    filter: none;
   }
 }
 
@@ -95,9 +133,9 @@
   align-items: center;
   gap: 12px;
   padding: 14px 20px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0));
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
   border-radius: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.03);
 }
 .brand { font-weight: 700; color: var(--text-h); font-size: 18px; }
 
