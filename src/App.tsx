@@ -10,9 +10,14 @@ import { logout } from "./fetch/AuthRequests";
 
 function Dashboard() {
   return (
-    <div className="card">
-      <h2>Bem-vindo ao painel</h2>
-      <p className="muted">Use os botões acima para navegar entre Produtos, Categorias e Movimentações.</p>
+    <div className="card dashboard-card">
+      <div className="dashboard-content">
+        <p className="eyebrow">Início</p>
+        <h2>Bem-vindo ao site Infotech</h2>
+        <p className="muted dashboard-text">
+          Explore o painel, acompanhe seus produtos, categorias e movimentações com facilidade e organização.
+        </p>
+      </div>
     </div>
   )
 }
@@ -35,6 +40,7 @@ function AppLayout() {
       <header className="topbar">
         <div className="brand">Infotech — Gestão de Produtos</div>
         <nav className="nav">
+          <NavLink to="/" end className={({isActive}) => isActive ? 'nav-button active' : 'nav-button'}>Início</NavLink>
           <NavLink to="/produtos" className={({isActive}) => isActive ? 'nav-button active' : 'nav-button'}>Produtos</NavLink>
           <NavLink to="/categorias" className={({isActive}) => isActive ? 'nav-button active' : 'nav-button'}>Categorias</NavLink>
           <NavLink to="/movimentacoes" className={({isActive}) => isActive ? 'nav-button active' : 'nav-button'}>Movimentações</NavLink>
