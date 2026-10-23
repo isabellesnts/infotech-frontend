@@ -11,6 +11,8 @@ export default function PListagemCategorias() {
       .catch((erro) => console.error(erro));
   }, []);
 
+  const listaCategorias = Array.isArray(categorias) ? categorias : [];
+
   return (
     <div className="container">
       <div className="card">
@@ -25,7 +27,7 @@ export default function PListagemCategorias() {
               </tr>
             </thead>
             <tbody>
-              {categorias.map((c) => (
+              {listaCategorias.map((c) => (
                 <tr key={c.id_categoria}>
                   <td>{c.id_categoria}</td>
                   <td>{c.nome}</td>
@@ -35,7 +37,7 @@ export default function PListagemCategorias() {
                       if (novo === null) return;
                       try {
                         await atualizarCategoria(c.id_categoria!, { nome: novo });
-                        setCategorias((prev) => prev.map(p => p.id_categoria === c.id_categoria ? { ...p, nome: novo } : p));
+                        setCategorias((prev) => Array.isArray(prev) ? prev.map(p => p.id_categoria === c.id_categoria ? { ...p, nome: novo } : p) : prev);
                       } catch (err) {
                         console.error(err);
                         alert('Erro ao atualizar categoria');
@@ -45,7 +47,7 @@ export default function PListagemCategorias() {
                       if (!confirm('Excluir categoria?')) return;
                       try {
                         await excluirCategoria(c.id_categoria!);
-                        setCategorias((prev) => prev.filter(p => p.id_categoria !== c.id_categoria));
+                        setCategorias((prev) => Array.isArray(prev) ? prev.filter(p => p.id_categoria !== c.id_categoria) : prev);
                       } catch (err) {
                         console.error(err);
                         alert('Erro ao excluir categoria');

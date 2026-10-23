@@ -11,6 +11,8 @@ export default function PListagemProdutos() {
       .catch((erro) => console.error(erro));
   }, []);
 
+  const listaProdutos = Array.isArray(produtos) ? produtos : [];
+
   return (
     <div className="container">
       <div className="card">
@@ -26,7 +28,7 @@ export default function PListagemProdutos() {
               </tr>
             </thead>
             <tbody>
-              {produtos.map((produto) => (
+              {listaProdutos.map((produto) => (
                 <tr key={produto.codigo}>
                   <td>{produto.codigo}</td>
                   <td>{produto.nome}</td>

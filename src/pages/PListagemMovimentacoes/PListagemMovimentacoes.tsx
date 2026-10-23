@@ -11,6 +11,8 @@ export default function PListagemMovimentacoes() {
       .catch((erro) => console.error(erro));
   }, []);
 
+  const listaMovimentacoes = Array.isArray(movs) ? movs : [];
+
   return (
     <div className="card">
       <div className="card-header">
@@ -38,7 +40,7 @@ export default function PListagemMovimentacoes() {
             </tr>
           </thead>
           <tbody>
-            {movs.map((m) => (
+            {listaMovimentacoes.map((m) => (
               <tr key={m.id_movimentacao}>
                 <td>{m.id_movimentacao}</td>
                 <td>{m.id_produto}</td>
@@ -56,7 +58,7 @@ export default function PListagemMovimentacoes() {
                       if (novoMotivo === null) return;
                       try {
                         await atualizarMovimentacao(m.id_movimentacao!, { ...m, motivo: novoMotivo });
-                        setMovs((prev) => prev.map(x => x.id_movimentacao === m.id_movimentacao ? { ...x, motivo: novoMotivo } : x));
+                        setMovs((prev) => Array.isArray(prev) ? prev.map(x => x.id_movimentacao === m.id_movimentacao ? { ...x, motivo: novoMotivo } : x) : prev);
                       } catch (err) {
                         console.error(err);
                         alert('Erro ao atualizar movimentação');
@@ -66,7 +68,7 @@ export default function PListagemMovimentacoes() {
                       if (!confirm('Excluir movimentação?')) return;
                       try {
                         await excluirMovimentacao(m.id_movimentacao!);
-                        setMovs((prev) => prev.filter(x => x.id_movimentacao !== m.id_movimentacao));
+                        setMovs((prev) => Array.isArray(prev) ? prev.filter(x => x.id_movimentacao !== m.id_movimentacao) : prev);
                       } catch (err) {
                         console.error(err);
                         alert('Erro ao excluir movimentação');
