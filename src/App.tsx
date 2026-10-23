@@ -1,12 +1,10 @@
-import { NavLink, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { NavLink, Routes, Route } from 'react-router-dom'
 import PCadastroProduto from "./pages/PCadastroProduto/PCadastroProduto";
 import PListagemProdutos from "./pages/PListagemProdutos/PListagemProdutos";
 import PCadastroCategoria from "./pages/PCadastroCategoria/PCadastroCategoria";
 import PListagemCategorias from "./pages/PListagemCategorias/PListagemCategorias";
 import PCadastroMovimentacao from "./pages/PCadastroMovimentacao/PCadastroMovimentacao";
 import PListagemMovimentacoes from "./pages/PListagemMovimentacoes/PListagemMovimentacoes";
-import PLogin from "./pages/PLogin/PLogin";
-import { logout } from "./fetch/AuthRequests";
 
 function Dashboard() {
   return (
@@ -22,19 +20,7 @@ function Dashboard() {
   )
 }
 
-function RequireAuth({ children }: { children: React.ReactNode }) {
-  const token = localStorage.getItem("auth_token");
-  return token ? <>{children}</> : <Navigate to="/login" replace />;
-}
-
 function AppLayout() {
-  const navigate = useNavigate();
-
-  function handleLogout() {
-    logout();
-    navigate("/login", { replace: true });
-  }
-
   return (
     <div className="page container">
       <header className="topbar">
@@ -46,7 +32,6 @@ function AppLayout() {
           <NavLink to="/movimentacoes" className={({isActive}) => isActive ? 'nav-button active' : 'nav-button'}>Movimentações</NavLink>
         </nav>
         <div className="spacer" />
-        <button type="button" className="nav-button nav-logout" onClick={handleLogout}>Sair</button>
       </header>
 
       <main style={{ display: 'grid', gap: 18 }}>
@@ -75,8 +60,7 @@ function AppLayout() {
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<PLogin />} />
-      <Route path="/*" element={<RequireAuth><AppLayout /></RequireAuth>} />
+      <Route path="/*" element={<AppLayout />} />
     </Routes>
   );
 }

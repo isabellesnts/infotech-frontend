@@ -22,8 +22,11 @@ const loginEndpoints = [
   "/api/auth/login",
   "/api/usuarios/login",
   "/login",
-  "/api/auth",
-  "/api/user/login",
+  "/auth/login",
+  "/usuario",
+  "/usuarios",
+  "/auth",
+  "/user/login",
 ];
 
 function getTokenFromPayload(data: any): string | null {
